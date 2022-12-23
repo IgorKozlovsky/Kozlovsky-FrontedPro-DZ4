@@ -1,19 +1,38 @@
-// Користувач вводить два числа через два промпти, і повідомлення виводиться алертом з таким результатом:
+// Створити скрипт який повинен виконувати наступне:
 
-//Користувач ввів 2 і 2:
+// питаємо у користувача, що він хоче зробити (add, sub, mult, div);
+// питаємо у користувача перше число;
+// запитуємо у користувача друге число;
+// виводимо результат дії (add, sub, mult, div) з усіма операндами (Наприклад "2 + 3 = 5").
 
-// 2+2=4
-// 2-2=0
-// 2*2=4
-// 2/2=1
+const operations = new Map([
+  ["add", "+"],
+  ["sub", "-"],
+  ["mult", "*"],
+  ["div", "/"],
+]);
+do {
+  var operation = prompt("Яку математичну операцію ви хочете зробити (add, sub, mult, div)?");
+} while (!operations.has(operation));
 
-const a = prompt("Введіть перше число"),
-  b = prompt("Введіть друге число");
+const a = +prompt("Введіть перше число"),
+  b = +prompt("Введіть друге число");
 
-alert(`
-Користувач ввів ${a} і ${b}:
-    • ${a}+${b}=${eval(`${a}+${b}`)}
-    • ${a}-${b}=${eval(`${a}-${b}`)}
-    • ${a}*${b}=${eval(`${a}*${b}`)}
-    • ${a}/${b}=${eval(`${a}/${b}`)}
-`);
+// или console.log(`${a} ${operations.get(operation)} ${b} = ${eval(`${a} ${operations.get(operation)} ${b}`)}`);
+
+let total = 0;
+switch (operations.get(operation)) {
+  case "+":
+    total = a + b;
+    break;
+  case "-":
+    total = a - b;
+    break;
+  case "*":
+    total = a * b;
+    break;
+  case "/":
+    total = a / b;
+    break;
+}
+console.log(`${a} ${operations.get(operation)} ${b} = ${total}`);
