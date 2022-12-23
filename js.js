@@ -11,12 +11,23 @@ const operations = new Map([
   ["mult", "*"],
   ["div", "/"],
 ]);
+
+//написал var чтобы не писать снаружи let
+// do {
+//   var operation = prompt("Яку математичну операцію ви хочете зробити (add, sub, mult, div)?");
+// } while (!operations.has(operation));
+
+let operation;
 do {
-  var operation = prompt("Яку математичну операцію ви хочете зробити (add, sub, mult, div)?");
+  operation = prompt("Яку математичну операцію ви хочете зробити (add, sub, mult, div)?");
 } while (!operations.has(operation));
 
-const a = +prompt("Введіть перше число"),
+let a;
+let b;
+do {
+  a = +prompt("Введіть перше число");
   b = +prompt("Введіть друге число");
+} while (!isFinite(a) || !isFinite(b));
 
 // или console.log(`${a} ${operations.get(operation)} ${b} = ${eval(`${a} ${operations.get(operation)} ${b}`)}`);
 
